@@ -1,0 +1,133 @@
+{% extends 'header.html' %} {% block body %}
+<div class="ui container">
+    <div class="ui two stackable cards">
+        <div class="ui link red-gradient card" data-id="0" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ui active inverted dimmer">
+                    <div class="ui medium loader main-loader"></div>
+                    <div class="ui medium text loader ghost hidden cover-buttons">
+                        <button class="ui secondary basic button retry-button">重试</button>
+                        <a class="link-button">
+                            <button class="ui secondary basic button">需要完善信息</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="ghost header main-header">
+                    <span class="item">校园卡余额</span>
+                    <span class="right floated number-display">
+                        <span class="value">0.00 </span>
+                        <span class="unit">元</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link orange-gradient card" data-id="1" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ui active inverted dimmer">
+                    <div class="ui medium loader main-loader"></div>
+                    <div class="ui medium text loader ghost hidden cover-buttons">
+                        <button class="ui secondary basic button retry-button">重试</button>
+                        <a class="link-button">
+                            <button class="ui secondary basic button">需要完善信息</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="ghost header main-header">
+                    <span class="item">宿舍电量</span>
+                    <span class="right floated number-display">
+                        <span class="value">0.00 </span>
+                        <span class="unit">度</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link green-gradient card" data-id="1" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">绩点</span>
+                    <span class="right floated number-display">
+                        <span class="value">0.00 </span>
+                        <span class="unit">分</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link blue-gradient card" data-id="1" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">借阅图书</span>
+                    <span class="right floated number-display">
+                        <span class="value">0 </span>
+                        <span class="unit">本</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link purple-gradient card" data-id="1" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">宿舍卫生</span>
+                    <span class="right floated number-display">
+                        <span class="value">0.0 </span>
+                        <span class="unit">分</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var dataCardClass = [
+        '.red-gradient.card',
+        '.orange-gradient.card',
+    ];
+
+    var dataModalClass = [
+        '.red-gradient.modal',
+        '.orange-gradient.modal',
+    ];
+
+    var dataCardUrl = [
+        'http://211.64.28.125:5000/card/balance/',
+        'http://211.64.28.125:5000/energy/',
+    ];
+
+    var dataModalUrl = [
+        '/card/info/',
+        '/energy/info/',
+    ];
+
+    var dataModalInitialized = [
+        false,
+        false,
+    ];
+
+    itemSize = dataCardClass.length;
+    for (var i = 0; i < itemSize; ++i) {
+        loadCardData(i);
+    }
+
+    $('.detail').modal({
+        blurring: true
+    }).modal('setting', 'transition', 'fade up');
+</script> {% endblock %}

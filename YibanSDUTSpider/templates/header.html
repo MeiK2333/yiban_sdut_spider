@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/MeiK_Query.css?v=1.0.4">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/semantic/semantic.min.js"></script>
+    <script src="/static/js/jquery.form.js"></script>
+    <script src="/static/js/jquery.timers.min.js"></script>
+    <script src="/static/js/jquery.scrollTo.min.js"></script>
+    <script src="/static/js/MeiK_Query.js?v=1.0.5"></script>
+    <title>一键查询</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107784973-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-107784973-3');
+    </script>
+</head>
+
+<body>
+    <div class="ui top fixed inverted menu">
+        <a class="header item" href="{% url 'YibanSdut:index' %}">
+            一键查询
+        </a>
+        <div class="right menu">
+            <a class="item" href="">
+                使用说明
+            </a>
+            <a class="item" href="">
+                编辑信息
+            </a>
+            <a class="item" href="{% url 'YibanSdut:logout' %}">
+                注销
+            </a>
+        </div>
+    </div>
+
+{% block body %}
+{% endblock %}
+
+    <!--Copyright-->
+    <div class="ui center aligned copyright container">
+        <p>© 2018 - 8102 Developed by
+            <a href="https://github.com/MeiK-h" target="_blank">MeiK</a>
+        </p>
+        <p>Front-end style designed by
+            <a href="https://dreamer.blue" target="_blank">bLue</a>
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+body {
+	background: #ededed;
+}
+
+.ui.container {
+	margin-top: 4.8em;
+}
+
+.ui.card.red-gradient, .ui.card.red-gradient:hover, .detail.red-gradient {
+	background-color: #dc2ab3;
+	background-image: linear-gradient(147deg, #dc2ab3 0%, #d91a6d 85%);
+}
+
+.ui.card.orange-gradient, .ui.card.orange-gradient:hover, .detail.orange-gradient {
+	background-color: #faaa61;
+	background-image: linear-gradient(90deg, #faaa61 0%, #F76B1C 100%);
+}
+
+.ui.card.green-gradient, .ui.card.green-gradient:hover, .detail.green-gradient {
+	background-color: #21ca82;
+	background-image: linear-gradient(62deg, #21ca82 42%, #37b228 100%);
+}
+
+.ui.card.blue-gradient, .ui.card.blue-gradient:hover, .detail.blue-gradient {
+	background-color: #22d0de;
+	background-image: linear-gradient(135deg, #22d0de 18%, #1a93e5 100%);
+}
+
+.ui.card.purple-gradient, .ui.card.purple-gradient:hover, .detail.purple-gradient {
+	background-color: #b721ff;
+	background-image: linear-gradient(60deg, #b721ff 0%, #9021ff 100%);
+}
+
+.ui.cards > .card > .extra {
+	color: #fff;
+	border-top: 1px solid rgba(255, 255, 255, .5) !important
+}
+
+.ui.link.card:hover {
+	-webkit-transform: none;
+	transform: none;
+	box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.ui.cards > .card > .content.main-content {
+	padding: 1.382em 1.382em 1em 1.382em;
+	/*padding-bottom: 0.618034em;*/
+}
+
+.ui.cards > .card > .content > .header:not(.ui).main-header {
+	color: #fff;
+	font-size: 1.5em;
+	margin-top: 0;
+}
+
+.number-display .value {
+	font-size: 1.382em;
+}
+
+.number-display .unit {
+	font-size: 0.721em;
+	vertical-align: 0.0721em;
+}
+
+.ghost {
+	/*visibility: hidden;*/
+	opacity: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.ui.cards > .card > .extra.main-extra {
+	padding-left: 1.382em;
+	padding-right: 1.382em;
+}
+
+.main-content .ui.active.dimmer {
+	border-radius: .28571429rem;
+}
+
+.ui.text.loader.cover-buttons {
+	padding-top: 0;
+}
+
+.retry-button {
+	margin-right: 0;
+}
+
+.cover-buttons:before {
+	display: none;
+}
+
+.cover-buttons:after {
+	display: none;
+}
+
+.detail.ui.basic.modal {
+	box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, .2), 1px 3px 15px 2px rgba(0, 0, 0, .2) !important;
+	border-radius: .28571429rem;
+}
+
+.detail.ui.basic.modal > .header {
+	border-bottom: 1px solid rgba(255, 255, 255, .5) !important;
+	background: transparent;
+}
+
+.detail.ui.basic.modal > .content {
+	background: transparent;
+	margin-bottom: 0.1em;
+}
+
+.detail > .content p {
+	margin-bottom: 0;
+}
+
+.detail .ui.table {
+	background: transparent;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.detail .ui.table td {
+	padding: .261904763em .261904763em;
+	border: none;
+}
+
+@media (max-width: 359px) {
+	.detail .ui.table tr.detail-header td:first-of-type {
+		width: 4em;
+	}
+}
+
+@media (min-width: 360px) {
+	.detail .ui.table tr.detail-header td:first-of-type {
+		min-width: 6em;
+		width: auto;
+	}
+}
+
+.detail .ui.table tr.detail-header td:first-of-type {
+	padding-left: 0;
+}
+
+.detail .ui.table td.right.aligned {
+	min-width: 6em;
+}
+
+.detail .ui.table tr.detail-header:not(:first-of-type) td {
+	padding-top: 1em;
+	border-top: 1px solid rgba(255, 255, 255, .3) !important;
+}
+
+.detail .ui.table tr.detail-footer:not(:last-of-type) td {
+	padding-bottom: 1em;
+}
+
+.detail .ui.table td.detail-key {
+	width: 8em;
+}
+
+.ui.modal > .close.ghost {
+	opacity: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.no-data-text {
+	margin: 2em 0;
+}
+
+.detail.ui.modal {
+	transition-property: height;
+	-moz-transition-property: height;
+	-webkit-transition-property: height;
+	-o-transition-property: height;
+	transition: 0.5s;
+	-moz-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+}
+
+.detail.ui.modal > .actions {
+	border-top: 1px solid rgba(255, 255, 255, .5);
+}
+
+.transparent-black.ui.label {
+	background-color: rgba(0, 0, 0, .25);
+	color: rgba(255, 255, 255, .9);
+	margin-right: 0;
+}
+
+.link-button .ui.button, .retry-button.ui.button {
+	margin-right: 0;
+}
+
+.copyright.ui.container {
+	margin-top: 3em;
+}
+
+.copyright p {
+	margin-bottom: 0.5em;
+}

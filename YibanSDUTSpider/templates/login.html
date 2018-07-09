@@ -1,0 +1,92 @@
+{% extends 'header.html' %} {% block body %}
+<style type="text/css">
+    body>.grid {
+        height: 100%;
+    }
+
+    .column {
+        max-width: 450px;
+    }
+</style>
+<div class="ui middle aligned center aligned grid" style="margin: 0;">
+    <div class="column">
+        <h2 class="ui blue header">
+            <div class="content">
+                帐号验证
+            </div>
+        </h2>
+        <form id="login-form" class="ui large form" method="POST" action="">
+            <div class="ui stacked segment" style="text-align: left;">
+
+                {% csrf_token %}
+
+                <div class="field">
+                    <label>学号</label>
+                    <input type="text" name="user_id">
+                </div>
+
+                <div class="field">
+                    <label>
+                        <a href="http://ehall.sdut.edu.cn/new/ehall.html" target="_blank">网上服务大厅</a>登录密码</label>
+                    <input type="password" name="ehall_pass" placeholder="不知道密码？试试身份证后六位">
+                </div>
+
+                <div class="ui fluid large blue submit button">直接登录</div>
+            </div>
+
+            <div class="ui error message"></div>
+            <div id="login-success-message" class="ui positive hidden message">
+                <div class="content">
+                    <div class="header">
+                        登录成功
+                    </div>
+                    <p>您可以回到
+                        <a class="auto-link" href="{% url 'YibanSdut:index' %}">首页</a>或等待稍后自动返回</p>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#login-form").form({
+            inline: true,
+            fields: {
+                user_id: {
+                    identifier: 'user_id',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '请填写学号'
+                    }]
+                },
+                ehall_pass: {
+                    identifier: 'ehall_pass',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '请填写网上服务大厅密码'
+                    }]
+                },
+                csrfmiddlewaretoken: {
+                    identifier: 'csrfmiddlewaretoken',
+                }
+            }
+        });
+
+        $("#login-form").ajaxForm({
+            dataType: 'json',
+            success: function (res) {
+                if (res["code"] != 0) {
+                    $("#login-form").form('add errors', [res["msg"]]);
+                } else {
+                    $("#login-success-message").show();
+                    $.scrollTo("#login-success-message");
+                    $("#login-success-message").oneTime('2s', function () {
+                        window.location.href = $(this).find(".auto-link").attr("href");
+                    });
+                }
+            }
+        });
+    });
+</script> {% endblock %}
