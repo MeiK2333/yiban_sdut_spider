@@ -152,28 +152,21 @@ function loadModalData(item) {
 					}
 				}
 				if(item == 1) { // 宿舍电量
-					var energy = parseFloat(data["lastreading"]);
-					var weekAvg = parseFloat(data["weekaverage"]);
-					var monthAvg = parseFloat(data["monthaverage"]);
-					var weekRemd = energy / weekAvg;
-					var monthRemd = energy / monthAvg;
-					var remdMin = Math.floor(Math.min(weekRemd, monthRemd));
-					var remdMax = Math.ceil(Math.max(weekRemd, monthRemd));
+					var energy = parseFloat(data["energy"]);
+					var remdMin = data['lower'];
+					var remdMax = data['upper'];
 					tbody.append('<tr></tr>');
 					tbody.find("tr:last").append('<td class="right aligned top aligned detail-key">宿舍：</td>');
-					tbody.find("tr:last").append('<td>' + data["roomname"] + '</td>');
+					tbody.find("tr:last").append('<td>' + data["room"] + '</td>');
 					tbody.append('<tr></tr>');
 					tbody.find("tr:last").append('<td class="right aligned top aligned detail-key">电量余量：</td>');
-					tbody.find("tr:last").append('<td>' + data["lastreading"] + ' 度</td>');
-					tbody.append('<tr></tr>');
-					tbody.find("tr:last").append('<td class="right aligned top aligned detail-key">日均用电：</td>');
-					tbody.find("tr:last").append('<td>' + data["weekaverage"] + ' 度</td>');
+					tbody.find("tr:last").append('<td>' + data["energy"] + ' 度</td>');
 					tbody.append('<tr></tr>');
 					tbody.find("tr:last").append('<td class="right aligned top aligned detail-key">预计可用：</td>');
-					tbody.find("tr:last").append('<td>' + remdMin + '-' + remdMax + ' 天</td>');
+					tbody.find("tr:last").append('<td>' + remdMin + ' - ' + remdMax + ' 天</td>');
 					tbody.append('<tr></tr>');
 					tbody.find("tr:last").append('<td class="right aligned top aligned detail-key">更新时间：</td>');
-					tbody.find("tr:last").append('<td>' + data["datatime"] + '</td>');
+					tbody.find("tr:last").append('<td>' + data["date"] + '</td>');
 				}
 				if(item == 3) { // 图书借阅
 					for(var i = 0; i < data.length; ++i) {

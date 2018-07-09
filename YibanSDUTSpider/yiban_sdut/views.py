@@ -33,6 +33,9 @@ def login(request):
             user_profile.save()
         else:
             user = user[0]
+        # 更新 ehall 密码
+        user.user_profile.ehall_pass = ehall_pass
+        user.user_profile.save()
         auth_login(request, user)
         return JsonResponse({
             'code': 0,

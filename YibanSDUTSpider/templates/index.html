@@ -49,13 +49,13 @@
             </div>
         </div>
 
-        <div class="ui link green-gradient card" data-id="1" href="javascript:void(0)">
+        <div class="ui link green-gradient card" data-id="1" href="javascript:void(0)" onclick="window.location.href='http://sdut.dogest.cn/grade/index.html?id={{ request.user.username }}'">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">绩点</span>
                     <span class="right floated number-display">
-                        <span class="value">0.00 </span>
-                        <span class="unit">分</span>
+                        <span class="value"></span>
+                        <span class="unit"></span>
                     </span>
                 </div>
             </div>
@@ -69,8 +69,8 @@
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">借阅图书</span>
                     <span class="right floated number-display">
-                        <span class="value">0 </span>
-                        <span class="unit">本</span>
+                        <span class="value"></span>
+                        <span class="unit"></span>
                     </span>
                 </div>
             </div>
@@ -84,8 +84,8 @@
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">宿舍卫生</span>
                     <span class="right floated number-display">
-                        <span class="value">0.0 </span>
-                        <span class="unit">分</span>
+                        <span class="value"></span>
+                        <span class="unit"></span>
                     </span>
                 </div>
             </div>
@@ -96,6 +96,58 @@
 
     </div>
 </div>
+
+<!--Modals-->
+<div class="ui tiny basic red-gradient detail modal" data-id="0">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <i class="ghost close icon"></i>
+    <div class="ghost header">校园卡近期消费记录</div>
+
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic orange-gradient detail modal" data-id="1">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">宿舍电量详情</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+
 <script>
     var dataCardClass = [
         '.red-gradient.card',
@@ -108,8 +160,8 @@
     ];
 
     var dataCardUrl = [
-        'http://211.64.28.125:5000/card/balance/',
-        'http://211.64.28.125:5000/energy/',
+        '/api/card/balance/',
+        '/api/energy/',
     ];
 
     var dataModalUrl = [
