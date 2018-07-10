@@ -259,23 +259,6 @@ function loadModalData(item) {
                         tbody.find("tr:last").append('<td>' + data[i]["id"] + '</td>');
                     }
                 }
-                if (item == 7) { // 课程表
-                    for (var i = 0; i < data.length; ++i) {
-                        tbody.append('<tr class="detail-header"></tr>');
-                        tbody.find("tr:last").append('<td rowspan="4" class="top aligned">' + data[i]["date"] + '</td>');
-                        tbody.find("tr:last").append('<td class="right aligned top aligned">分数：</td>');
-                        tbody.find("tr:last").append('<td>' + data[i]["score"] + '</td>');
-                        tbody.append('<tr></tr>');
-                        tbody.find("tr:last").append('<td class="right aligned top aligned">周次：</td>');
-                        tbody.find("tr:last").append('<td>' + data[i]["week"] + '</td>');
-                        tbody.append('<tr></tr>');
-                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍楼：</td>');
-                        tbody.find("tr:last").append('<td>' + data[i]["floor"] + '</td>');
-                        tbody.append('<tr class="detail-footer"></tr>');
-                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍号：</td>');
-                        tbody.find("tr:last").append('<td>' + data[i]["room"] + '</td>');
-                    }
-                }
             }
 
             modal.modal('refresh');
