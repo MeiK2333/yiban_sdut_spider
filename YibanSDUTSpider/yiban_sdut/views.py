@@ -6,13 +6,12 @@ from django.shortcuts import redirect, render
 
 from spider import SDUT
 
-from .models import User, UserProfile, get_user_cache, set_user_cache
+from .models import User, UserProfile
 
 
 @login_required
 def index(request):
-    user_cache = get_user_cache(request.user)
-    return render(request, 'index.html', {'user_cache': user_cache})
+    return render(request, 'index.html')
 
 
 def login(request):

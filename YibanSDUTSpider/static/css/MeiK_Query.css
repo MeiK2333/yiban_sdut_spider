@@ -31,6 +31,26 @@ body {
 	background-image: linear-gradient(60deg, #b721ff 0%, #9021ff 100%);
 }
 
+.ui.card.black-gradient, .ui.card.black-gradient:hover, .detail.black-gradient {
+	background-color: #0a0a0a;
+	background-image: linear-gradient(60deg, #101010 0%, #505050 100%);
+}
+
+.ui.card.black-blue-gradient, .ui.card.black-blue-gradient:hover, .detail.black-blue-gradient {
+	background-color: #2a4a61;
+	background-image: linear-gradient(60deg, #000000 0%, #235373 100%);
+}
+
+.ui.card.yellow-gradient, .ui.card.yellow-gradient:hover, .detail.yellow-gradient {
+	background-color: #2a4a61;
+	background-image: linear-gradient(60deg, #5d4e00 0%, #e8c400 100%);
+}
+
+.ui.card.gray-green-gradient, .ui.card.gray-green-gradient:hover, .detail.gray-green-gradient {
+	background-color: #21ca82;
+	background-image: linear-gradient(62deg, #16402e 42%, #417b39 100%);
+}
+
 .ui.cards > .card > .extra {
 	color: #fff;
 	border-top: 1px solid rgba(255, 255, 255, .5) !important

@@ -1,6 +1,7 @@
 {% extends 'header.html' %} {% block body %}
 <div class="ui container">
     <div class="ui two stackable cards">
+
         <div class="ui link red-gradient card" data-id="0" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ui active inverted dimmer">
@@ -49,7 +50,7 @@
             </div>
         </div>
 
-        <div class="ui link green-gradient card" data-id="1" href="javascript:void(0)" onclick="window.location.href='http://sdut.dogest.cn/grade/index.html?id={{ request.user.username }}'">
+        <div class="ui link green-gradient card" data-id="2" href="javascript:void(0)" onclick="window.location.href='http://sdut.dogest.cn/grade/index.html?id={{ request.user.username }}'">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">绩点</span>
@@ -64,10 +65,10 @@
             </div>
         </div>
 
-        <div class="ui link blue-gradient card" data-id="1" href="javascript:void(0)">
+        <div class="ui link blue-gradient card" data-id="3" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
-                    <span class="item">借阅图书</span>
+                    <span class="item">图书借阅</span>
                     <span class="right floated number-display">
                         <span class="value"></span>
                         <span class="unit"></span>
@@ -79,10 +80,70 @@
             </div>
         </div>
 
-        <div class="ui link purple-gradient card" data-id="1" href="javascript:void(0)">
+        <div class="ui link purple-gradient card" data-id="4" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">图书借阅历史</span>
+                    <span class="right floated number-display">
+                        <span class="value"></span>
+                        <span class="unit"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link black-gradient card" data-id="5" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">宿舍卫生</span>
+                    <span class="right floated number-display">
+                        <span class="value"></span>
+                        <span class="unit"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link black-blue-gradient card" data-id="6" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">消费汇总</span>
+                    <span class="right floated number-display">
+                        <span class="value"></span>
+                        <span class="unit"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link yellow-gradient card" data-id="7" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">课程表</span>
+                    <span class="right floated number-display">
+                        <span class="value"></span>
+                        <span class="unit"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+
+        <div class="ui link gray-green-gradient card" data-id="5" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">作业通知</span>
                     <span class="right floated number-display">
                         <span class="value"></span>
                         <span class="unit"></span>
@@ -147,16 +208,54 @@
         </div>
     </div>
 </div>
+<div class="ui tiny basic blue-gradient detail modal" data-id="3">
+		<div class="ui active inverted dimmer">
+			<div class="ui medium loader main-loader"></div>
+			<div class="ui medium text loader ghost hidden cover-buttons">
+				<button class="ui secondary basic button retry-button">重试</button>
+			</div>
+		</div>
+		<div class="ghost header">图书借阅详情</div>
+		<i class="ghost close icon"></i>
+		<div class="ghost content">
+			<div class="no-data-text hidden">
+				<h4 class="text-center">没有查询到信息</h4>
+			</div>
+			<table class="ui inverted unstackable table">
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<div class="ghost actions">
+			<div class="ui basic cancel inverted button">
+				关闭
+			</div>
+		</div>
+	</div>
 
 <script>
     var dataCardClass = [
         '.red-gradient.card',
         '.orange-gradient.card',
+        '.green-gradient.card',
+        '.blue-gradient.card',
+        '.purple-gradient.card',
+        '.black-gradient.card',
+        '.black-blue-gradient.card',
+        '.yellow-gradient.card',
+        '.gray-green-gradient.card',
     ];
 
     var dataModalClass = [
         '.red-gradient.modal',
         '.orange-gradient.modal',
+        '.green-gradient.modal',
+        '.blue-gradient.modal',
+        '.purple-gradient.modal',
+        '.black-gradient.modal',
+        '.black-blue-gradient.modal',
+        '.yellow-gradient.modal',
+        '.gray-green-gradient.modal',
     ];
 
     var dataCardUrl = [
@@ -165,11 +264,25 @@
     ];
 
     var dataModalUrl = [
-        '/card/info/',
-        '/energy/info/',
+        '/api/card/info/',
+        '/api/energy/info/',
+        'http://sdut.dogest.cn/grade/index.html',
+        '/api/borrow/info/',
+        '/api/borrow/history/',
+        '/api/dorm_health/',
+        '/api/cust_state_info/',
+        '/api/schedule/',
+        '/api/reminder/',
     ];
 
     var dataModalInitialized = [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
         false,
         false,
     ];

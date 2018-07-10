@@ -10,4 +10,5 @@ urlpatterns = [
     path('card/info/', views.card_info),
     path('energy/', views.energy),
     path('energy/info/', views.energy_info),
+    path('borrow/info/', views.borrow),
 ]
