@@ -39,7 +39,8 @@ class Ehall(object):
         data = {
             'username': self.username,
             'password': self.password,
-            'rememberMe': False
+            # 'rememberMe': False
+            'rememberMe': 'on',
         }
         for ipt in ipts:
             if ipt.get('value'):
