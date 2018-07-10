@@ -1,31 +1,12 @@
+import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from spider import SDUT, Ecard, Lib, Logistics
+from spider import SDUT, Dormitory, Ecard, EduManage, Lib, Logistics
 
-
-def api_access(item, value, unit, url):
-    return JsonResponse({
-        'code': 0,
-        'data': {
-            'extra': {
-                'type': 'ajax',
-                'url': url,
-            },
-            'item': item,
-            'unit': unit,
-            'value': value,
-        },
-        'msg': 'success'
-    })
-
-
-def api_error(msg):
-    return JsonResponse({
-        "code": 1,
-        "msg": msg
-    })
+from .utils import api_access, api_error, schedule_parser
 
 
 @login_required
@@ -86,5 +67,66 @@ def borrow(request):
             'data': lib.get_borrow_info(),
             'name': '图书借阅',
             'type': 'list'
+        })
+    return api_error("获取失败, 请检查密码是否正确")
+
+
+@login_required
+def borrow_history(request):
+    user_id = request.user.username
+    ehall_pass = request.user.user_profile.ehall_pass
+    lib = SDUT.get_object(Lib, user_id, ehall_pass)
+    if lib and lib.logined:
+        return JsonResponse({
+            'data': lib.get_borrow_history(),
+            'name': '图书借阅历史',
+            'type': 'list'
+        })
+    return api_error("获取失败, 请检查密码是否正确")
+
+
+@login_required
+def dorm_health(request):
+    user_id = request.user.username
+    ehall_pass = request.user.user_profile.ehall_pass
+    dormitory = SDUT.get_object(Dormitory, user_id, ehall_pass)
+    if dormitory and dormitory.logined:
+        return JsonResponse({
+            'data': dormitory.get_dorm_health(),
+            'name': '宿舍卫生分数',
+            'type': 'list'
+        })
+    return api_error("获取失败, 请检查密码是否正确")
+
+
+@login_required
+def schedule(request, cur=None):
+    user_id = request.user.username
+    ehall_pass = request.user.user_profile.ehall_pass
+    edu_manage = SDUT.get_object(EduManage, user_id, ehall_pass)
+    if edu_manage and edu_manage.logined:
+        data = edu_manage.get_cur_schedule(cur=cur)
+        cur = data['cur']
+        data['schedule']['data'] = schedule_parser(data['schedule']['data'])
+        return JsonResponse({
+            'data': data,
+            'name': '课程表',
+            'type': 'list'
+        })
+    return api_error("获取失败, 请检查密码是否正确")
+
+
+@login_required
+def cust_state_info(request, delta=7):
+    user_id = request.user.username
+    ehall_pass = request.user.user_profile.ehall_pass
+    ecard = SDUT.get_object(Ecard, user_id, ehall_pass)
+    if ecard and ecard.logined:
+        start = (datetime.date.today() -
+                 datetime.timedelta(days=delta)).strftime("%Y%m%d")
+        return JsonResponse({
+            'data': ecard.get_cust_state_info(start=start),
+            'name': '交易汇总',
+            'type': 'dict'
         })
     return api_error("获取失败, 请检查密码是否正确")

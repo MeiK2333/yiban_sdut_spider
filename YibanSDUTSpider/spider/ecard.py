@@ -123,6 +123,8 @@ class Ecard(object):
         data['ctl00$ContentPlaceHolder1$CustStateInfoAscx1$eDateTime'] = end
 
         rst = self.session.post(url, data=data)
+        if '没有查询到相关数据！！无返回结果！' in rst.text:
+            return []
         soup = BeautifulSoup(rst.text, 'html.parser')
         table = soup.find('table').find_all('table')[3]
         trs = table.find_all('tr')

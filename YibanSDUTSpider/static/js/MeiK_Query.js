@@ -1,4 +1,6 @@
 var placeholder = '喵';
+var dataModalHtml = [];
+
 
 $(function () {
     $(".ui.dropdown").dropdown({ keepOnScreen: true });
@@ -12,7 +14,17 @@ $(function () {
         resetModal(modal);
         loadModalData(modal.data("id"));
     });
+    for (var i = 0; i < dataModalClass.length; i++) {
+        dataModalHtml[i] = $(dataModalClass[i]).html();
+    }
 });
+
+function reloadCustStateInfo(id, delta) {
+    var modal = $(dataModalClass[id]);
+    modal.html(dataModalHtml[id]);
+    dataModalUrl[id] = '/api/cust_state_info/' + delta + '/';
+    loadModalData(modal.data("id"));
+}
 
 function showRetryButton(obj) {
     obj.find('.link-button').hide();
@@ -187,7 +199,7 @@ function loadModalData(item) {
                         tbody.find("tr:last").append('<td class="right aligned top aligned">作者：</td>');
                         tbody.find("tr:last").append('<td>' + data[i]["author"] + '</td>');
                         tbody.append('<tr></tr>');
-                        tbody.find("tr:last").append('<td class="right aligned top aligned">借阅次数：</td>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">续借次数：</td>');
                         tbody.find("tr:last").append('<td>' + data[i]["borrowCnt"] + '</td>');
                         tbody.append('<tr></tr>');
                         tbody.find("tr:last").append('<td class="right aligned top aligned">书籍属区：</td>');
@@ -197,6 +209,71 @@ function loadModalData(item) {
                         if (daysRemd < 7)
                             tbody.find("tr:last").append('<td>' + data[i]["backDate"] + ' <span class="ui transparent-black horizontal label">剩 ' + daysRemd + ' 天</span></td>');
                         else tbody.find("tr:last").append('<td>' + data[i]["backDate"] + '</td>');
+                    }
+                }
+                if (item == 4) { // 图书借阅历史
+                    for (var i = 0; i < data.length; ++i) {
+                        var daysRemd = Math.floor((new Date(data[i]["backDate"]) - new Date()) / (24 * 60 * 60 * 1000));
+                        tbody.append('<tr class="detail-header"></tr>');
+                        tbody.find("tr:last").append('<td rowspan="4" class="top aligned">' + data[i]["borrowDate"] + '</td>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">书名：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["title"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">作者：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["author"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">书籍属区：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["site"] + '</td>');
+                        tbody.append('<tr class="detail-footer"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">应还日期：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["backDate"] + '</td>');
+                    }
+                }
+                if (item == 5) { // 宿舍卫生分数
+                    for (var i = 0; i < data.length; ++i) {
+                        tbody.append('<tr class="detail-header"></tr>');
+                        tbody.find("tr:last").append('<td rowspan="4" class="top aligned">' + data[i]["date"] + '</td>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">分数：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["score"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">周次：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["week"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍楼：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["floor"] + '</td>');
+                        tbody.append('<tr class="detail-footer"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍号：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["room"] + '</td>');
+                    }
+                }
+                if (item == 6) { // 交易汇总
+                    for (var i = 0; i < data.length; ++i) {
+                        tbody.append('<tr class="detail-header"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">交易金额：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["amount"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">交易科目：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["reason"] + '</td>');
+                        tbody.append('<tr class="detail-footer"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">交易编号 ：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["id"] + '</td>');
+                    }
+                }
+                if (item == 7) { // 课程表
+                    for (var i = 0; i < data.length; ++i) {
+                        tbody.append('<tr class="detail-header"></tr>');
+                        tbody.find("tr:last").append('<td rowspan="4" class="top aligned">' + data[i]["date"] + '</td>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">分数：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["score"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">周次：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["week"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍楼：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["floor"] + '</td>');
+                        tbody.append('<tr class="detail-footer"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">宿舍号：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["room"] + '</td>');
                     }
                 }
             }

@@ -113,7 +113,7 @@
         <div class="ui link black-blue-gradient card" data-id="6" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
-                    <span class="item">消费汇总</span>
+                    <span class="item">校园卡交易汇总</span>
                     <span class="right floated number-display">
                         <span class="value"></span>
                         <span class="unit"></span>
@@ -209,29 +209,107 @@
     </div>
 </div>
 <div class="ui tiny basic blue-gradient detail modal" data-id="3">
-		<div class="ui active inverted dimmer">
-			<div class="ui medium loader main-loader"></div>
-			<div class="ui medium text loader ghost hidden cover-buttons">
-				<button class="ui secondary basic button retry-button">重试</button>
-			</div>
-		</div>
-		<div class="ghost header">图书借阅详情</div>
-		<i class="ghost close icon"></i>
-		<div class="ghost content">
-			<div class="no-data-text hidden">
-				<h4 class="text-center">没有查询到信息</h4>
-			</div>
-			<table class="ui inverted unstackable table">
-				<tbody>
-				</tbody>
-			</table>
-		</div>
-		<div class="ghost actions">
-			<div class="ui basic cancel inverted button">
-				关闭
-			</div>
-		</div>
-	</div>
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">图书借阅详情</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic purple-gradient detail modal" data-id="4">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">图书借阅历史</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic black-gradient detail modal" data-id="5">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">宿舍卫生分数</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic black-blue-gradient detail modal" data-id="6">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">交易汇总</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <div class="ui four buttons">
+                <button class="ui button" onclick="reloadCustStateInfo(6, 7)">7</button>
+                <button class="ui button" onclick="reloadCustStateInfo(6, 30)">30</button>
+                <button class="ui button" onclick="reloadCustStateInfo(6, 365)">365</button>
+                <button class="ui button" onclick="reloadCustStateInfo(6, 1461)">1461</button>
+            </div>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
 
 <script>
     var dataCardClass = [
