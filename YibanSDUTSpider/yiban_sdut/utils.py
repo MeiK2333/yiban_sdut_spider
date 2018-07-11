@@ -22,7 +22,6 @@ def get_user_id_by_yiban(access_token):
     url = 'https://openapi.yiban.cn/user/verify_me?access_token=' + access_token
     req = requests.get(url)
     data = json.loads(req.text)
-    print(data)
     if data['status'] != 'success':
         return None
-    return data['info']['yb_schoolid']
+    return data['info']['yb_studentid']
