@@ -1,0 +1,50 @@
+{% extends 'header.html' %} {% block body %}
+<div class="ui container">
+    <h1>一键查询使用说明</h1>
+    <h2>版权及安全性说明</h2>
+    <p>本项目由
+        <a href="https://github.com/MeiK-h" target="_blank">MeiK</a> 与
+        <a href="https://dreamer.blue" target="_blank">bLue</a> 协作开发, 收集学校内各个网站的数据并统一显示, 所有数据的最终解释权归对应的网站所有.</p>
+    <ul>
+        <li>
+            校园卡查询: <a href="http://211.64.27.136/SelfSearch/Default.aspx">一卡通自助查询管理系统</a>
+        </li>
+        <li>
+            宿舍电量查询: <a href="http://hqfw.sdut.edu.cn/">后勤服务大厅</a>
+        </li>
+        <li>
+            绩点查询原始数据: <a href="http://210.44.176.116/cjcx/">山东理工大学学生成绩查询系统</a>
+        </li>
+        <li>
+            绩点查询统计数据: <a href="http://sdut.dogest.cn/grade/index.html">山东理工大学绩点查询系统 - by Shannon</a>
+        </li>
+        <li>
+            图书借阅: <a href="http://222.206.65.12/reader/redr_info.php">山东理工大学图书馆书目检索系统</a>
+        </li>
+        <li>
+            宿舍卫生: <a href="http://ehall.sdut.edu.cn/new/ehall.html">山东理工大学网上服务大厅</a>
+        </li>
+    </ul>
+
+    <h2>使用</h2>
+    <p>每一个卡片都可以点击以查看详细的信息.</p>
+    <h3>易班使用</h3>
+    <p>在易班 APP 内打开的时候, 会自动触发易班授权, 授权通过后即可使用</p>
+    <p>如果您是第一次使用, 则需要填写您的学号和密码, 密码是 <a href="http://ehall.sdut.edu.cn/new/ehall.html">山东理工大学网上服务大厅</a> 的密码, 一般为身份证后六位.</p>
+    <p>使用易班 APP 时, 每次打开页面, 易班都会重新验证授权, 这个过程可能会耗时过长, 观察页面 Title 的变化可以看出, 打开页面的时间大部分都被易班 APP 给占用了.</p>
+    <h3>网页使用</h3>
+    <p>在浏览器中输入 <a href="yiban.meik2333.com">yiban.meik2333.com</a> 访问本网站, 输入学号与密码即可使用.</p>
+
+    <h2>异常</h2>
+    <h3>单个无法加载</h3>
+    <p>本项目提供的数据是向上游服务器请求的, 因此, 如果有某一项无法访问的话, 有可能是因为上游服务器故障或者无法连接至上游服务器, 请稍后再试. 如果长时间无法使用, 请联系作者. </p>
+    <h3>全部无法加载</h3>
+    <p>请检查您的账号密码是否正确, 可以点击右上角的编辑信息来修改密码. </p>
+
+    <h2>TODO</h2>
+    <p>由于已经是学期末, 课程表和作业通知功能无法获得足够的数据来进行开发测试, 因此这两个功能现在还不可用. </p>
+
+    <h2>反馈意见与提交 BUG</h2>
+    <p>MeiK mail: <a href="mailto:meik2333@gmail.com?subject=[一键查询]问题反馈" target="_blank">meik2333@gmail.com</a></p>
+</div>
+{% endblock %}

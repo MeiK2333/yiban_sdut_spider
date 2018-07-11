@@ -75,3 +75,7 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('/')
+
+
+def description(request):
+    return render(request, 'description.html')
