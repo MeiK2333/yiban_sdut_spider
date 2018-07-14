@@ -1,6 +1,8 @@
 var placeholder = '喵';
 var dataModalHtml = [];
 
+var year = -1;
+var semester = -1;
 
 $(function () {
     $(".ui.dropdown").dropdown({ keepOnScreen: true });
@@ -257,6 +259,22 @@ function loadModalData(item) {
                         tbody.append('<tr class="detail-footer"></tr>');
                         tbody.find("tr:last").append('<td class="right aligned top aligned">交易编号 ：</td>');
                         tbody.find("tr:last").append('<td>' + data[i]["id"] + '</td>');
+                    }
+                }
+                if (item == 9) { // 成绩查询
+                    for (var i = 0; i < data.length; ++i) {
+                        tbody.append('<tr class="detail-header"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">课程名称：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["course_name"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">成绩：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["grade"] + '</td>');
+                        tbody.append('<tr></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">学分：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["score"] + '</td>');
+                        tbody.append('<tr class="detail-footer"></tr>');
+                        tbody.find("tr:last").append('<td class="right aligned top aligned">绩点：</td>');
+                        tbody.find("tr:last").append('<td>' + data[i]["point"] + '</td>');
                     }
                 }
             }

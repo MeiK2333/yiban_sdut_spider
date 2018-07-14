@@ -1,5 +1,6 @@
 # coding=utf-8
 import json
+import time
 
 from bs4 import BeautifulSoup
 from requests import session
@@ -34,6 +35,56 @@ class EduManage(object):
         if rst.url == 'http://210.44.191.125/jwglxt/xtgl/index_initMenu.html':
             return True
         return False
+
+    def get_grade(self, year=-1, semester=-1):
+        """ 查询成绩 """
+        url = 'http://211.64.28.123/jwglxt/cjcx/cjcx_cxDgXscj.html?doType=query'
+        data = {
+            'queryModel.showCount': '100',
+            'queryModel.currentPage': '1',
+        }
+        m = int(time.strftime('%m', time.localtime(time.time())))
+        if year != -1:
+            if isinstance(year, str):
+                year = year[:4]
+            data['xnm'] = str(year)
+        else:
+            year = time.strftime('%Y', time.localtime(time.time()))
+            if m < 9:
+                year = str(int(year) - 1)
+        if semester != -1:
+            if semester == 1:
+                data['xqm'] = '3'
+            elif semester == 2:
+                data['xqm'] = '12'
+        else:
+            # 随手以 3 月和 9 月来分割一年, 可以自由调整
+            if 3 <= m < 9:
+                data['xqm'] = '12'
+            else:
+                data['xqm'] = '3'
+        req = self.session.post(url, data=data)
+        rjson = json.loads(req.text)
+        if not rjson.get('items'):
+            return None
+        rdata_list = []
+        for item in rjson.get('items'):
+            d = {
+                'year': item.get('xnm', ''),
+                'semester': item.get('xqmc', ''),
+                'grade': item.get('cj', ''),
+                'course_code': item.get('kch.', ''),
+                'course_name': item.get('kcmc', ''),
+                'score': item.get('xf', ''),
+                'point': item.get('jd', ''),
+                'state': item.get('ksxz', ''),
+                'course_category': item.get('kclbmc', ''),
+                'course_nature': item.get('kcxzmc', ''),
+                'class': item.get('bj', ''),
+            }
+            rdata_list.append(d)
+
+        return rdata_list
 
     def get_schedule(self, year=-1, semester=-1, parse=True):
         """ 获得个人课表 """

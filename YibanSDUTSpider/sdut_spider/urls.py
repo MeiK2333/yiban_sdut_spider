@@ -17,4 +17,6 @@ urlpatterns = [
     path('cust_state_info/<int:delta>/', views.cust_state_info),
     path('schedule/', views.schedule),
     path('schedule/<int:cur>/', views.schedule),
+    path('grade/', views.grade),
+    path('grade/<year>/<semester>/', views.grade),
 ]

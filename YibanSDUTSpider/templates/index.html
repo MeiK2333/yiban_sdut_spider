@@ -2,7 +2,7 @@
 <div class="ui container">
     <div class="ui two stackable cards">
 
-        <div class="ui link red-gradient card" data-id="0" href="javascript:void(0)">
+        <div class="ui link rose-gradient card" data-id="0" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ui active inverted dimmer">
                     <div class="ui medium loader main-loader"></div>
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <div class="ui link black-gradient card" data-id="5" href="javascript:void(0)">
+        <div class="ui link dblue-gradient card" data-id="5" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">宿舍卫生</span>
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <div class="ui link black-blue-gradient card" data-id="6" href="javascript:void(0)">
+        <div class="ui link ddblue-gradient card" data-id="6" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">校园卡交易汇总</span>
@@ -125,7 +125,8 @@
             </div>
         </div>
 
-        <div class="ui link yellow-gradient card" data-id="7" href="javascript:void(0)">
+        <!--
+        <div class="ui link red-gradient card" data-id="7" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">课程表</span>
@@ -140,10 +141,26 @@
             </div>
         </div>
 
-        <div class="ui link gray-green-gradient card" data-id="5" href="javascript:void(0)">
+        <div class="ui link brown-gradient card" data-id="8" href="javascript:void(0)">
             <div class="content main-content">
                 <div class="ghost header main-header" style="opacity: 1;">
                     <span class="item">作业通知</span>
+                    <span class="right floated number-display">
+                        <span class="value"></span>
+                        <span class="unit"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="ghost extra main-extra" style="opacity: 1;">
+                查看详情
+            </div>
+        </div>
+    -->
+
+        <div class="ui link black-gradient card" data-id="9" href="javascript:void(0)">
+            <div class="content main-content">
+                <div class="ghost header main-header" style="opacity: 1;">
+                    <span class="item">成绩查询</span>
                     <span class="right floated number-display">
                         <span class="value"></span>
                         <span class="unit"></span>
@@ -159,7 +176,7 @@
 </div>
 
 <!--Modals-->
-<div class="ui tiny basic red-gradient detail modal" data-id="0">
+<div class="ui tiny basic rose-gradient detail modal" data-id="0">
     <div class="ui active inverted dimmer">
         <div class="ui medium loader main-loader"></div>
         <div class="ui medium text loader ghost hidden cover-buttons">
@@ -256,7 +273,7 @@
         </div>
     </div>
 </div>
-<div class="ui tiny basic black-gradient detail modal" data-id="5">
+<div class="ui tiny basic dblue-gradient detail modal" data-id="5">
     <div class="ui active inverted dimmer">
         <div class="ui medium loader main-loader"></div>
         <div class="ui medium text loader ghost hidden cover-buttons">
@@ -280,7 +297,7 @@
         </div>
     </div>
 </div>
-<div class="ui tiny basic black-blue-gradient detail modal" data-id="6">
+<div class="ui tiny basic ddblue-gradient detail modal" data-id="6">
     <div class="ui active inverted dimmer">
         <div class="ui medium loader main-loader"></div>
         <div class="ui medium text loader ghost hidden cover-buttons">
@@ -310,30 +327,104 @@
         </div>
     </div>
 </div>
+<div class="ui tiny basic red-gradient detail modal" data-id="7">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">课程表</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic brown-gradient detail modal" data-id="8">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">作业通知</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
+<div class="ui tiny basic black-gradient detail modal" data-id="9">
+    <div class="ui active inverted dimmer">
+        <div class="ui medium loader main-loader"></div>
+        <div class="ui medium text loader ghost hidden cover-buttons">
+            <button class="ui secondary basic button retry-button">重试</button>
+        </div>
+    </div>
+    <div class="ghost header">成绩查询</div>
+    <i class="ghost close icon"></i>
+    <div class="ghost content">
+        <div class="no-data-text hidden">
+            <h4 class="text-center">没有查询到信息</h4>
+        </div>
+        <table class="ui inverted unstackable table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="ghost actions">
+        <div class="ui basic cancel inverted button">
+            关闭
+        </div>
+    </div>
+</div>
 
 <script>
     var dataCardClass = [
-        '.red-gradient.card',
+        '.rose-gradient.card',
         '.orange-gradient.card',
         '.green-gradient.card',
         '.blue-gradient.card',
         '.purple-gradient.card',
+        '.dblue-gradient.card',
+        '.ddblue-gradient.card',
+        '.red-gradient.card',
+        '.brown-gradient.card',
         '.black-gradient.card',
-        '.black-blue-gradient.card',
-        '.yellow-gradient.card',
-        '.gray-green-gradient.card',
     ];
 
     var dataModalClass = [
-        '.red-gradient.modal',
+        '.rose-gradient.modal',
         '.orange-gradient.modal',
         '.green-gradient.modal',
         '.blue-gradient.modal',
         '.purple-gradient.modal',
+        '.dblue-gradient.modal',
+        '.ddblue-gradient.modal',
+        '.red-gradient.modal',
+        '.brown-gradient.modal',
         '.black-gradient.modal',
-        '.black-blue-gradient.modal',
-        '.yellow-gradient.modal',
-        '.gray-green-gradient.modal',
     ];
 
     var dataCardUrl = [
@@ -351,12 +442,14 @@
         '/api/cust_state_info/',
         '/api/schedule/',
         '/api/reminder/',
+        '/api/grade/',
     ];
 
     var dataModalInitialized = [
         false,
         false,
         true,
+        false,
         false,
         false,
         false,

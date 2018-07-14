@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -128,5 +129,31 @@ def cust_state_info(request, delta=7):
             'data': ecard.get_cust_state_info(start=start),
             'name': '交易汇总',
             'type': 'dict'
+        })
+    return api_error("获取失败, 请检查密码是否正确")
+
+
+@login_required
+def grade(request, year=-1, semester=-1):
+    m = int(time.strftime('%m', time.localtime(time.time())))
+    if year == -1:
+        year = time.strftime('%Y', time.localtime(time.time()))
+        if m < 9:
+            year = str(int(year) - 1)
+    if semester == -1:
+        if 3 <= m < 9:
+            semester = 2
+        else:
+            semester = 1
+    user_id = request.user.username
+    ehall_pass = request.user.user_profile.ehall_pass
+    edu_manage = SDUT.get_object(EduManage, user_id, ehall_pass)
+    if edu_manage and edu_manage.logined:
+        return JsonResponse({
+            'data': edu_manage.get_grade(year, semester),
+            'name': '成绩查询',
+            'year': year + "-" + str(int(year) + 1),
+            'semester': semester,
+            'type': 'list'
         })
     return api_error("获取失败, 请检查密码是否正确")
