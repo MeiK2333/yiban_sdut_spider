@@ -7,7 +7,7 @@ Yiban 一键查询
 ```shell
 # 创建虚拟环境
 $ python3 -m venv venv
-$ sourct venv/bin/activate
+$ source venv/bin/activate
 # 安装依赖包
 (venv)$ pip install -r requirements.txt
 ...

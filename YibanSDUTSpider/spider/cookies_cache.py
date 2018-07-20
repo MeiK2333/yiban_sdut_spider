@@ -71,6 +71,12 @@ def save_user(user_id, password, cookies):
         user = session.query(User).filter(User.user_id == user_id).one()
         user.cookies = cookies
         session.flush()
+    elif get_user_by_id(user_id):
+        # 若用户已存在，但密码不同, 则更新密码
+        user = session.query(User).filter(User.user_id == user_id).one()
+        user.password = passwd_encode(password)
+        user.cookies = cookies
+        session.flush()
     else:
         # 否则创建用户数据
         new_user = User(user_id=user_id, password=passwd_encode(
@@ -79,6 +85,22 @@ def save_user(user_id, password, cookies):
 
     session.commit()
     session.close()
+
+
+def get_user_by_id(user_id):
+    """ 通过 user_id 查找用户信息 """
+    engine = create_engine('sqlite:///{db_name}'.format(db_name=db_name))
+
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    user = session.query(User).filter(User.user_id == user_id).all()
+    session.close()
+
+    if not user:
+        return None
+    user = user[0]
+
+    return user
 
 
 def get_user(user_id, password):
