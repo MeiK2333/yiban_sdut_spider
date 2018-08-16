@@ -38,7 +38,7 @@ def yiban_login(request):
 def login(request):
     if request.method == 'GET':
         # 判断是否为易班 APP 访问, 如果是易班访问, 则重定向至易班登录
-        if 'yiban_android' in request.META.get('HTTP_USER_AGENT'):
+        if 'yiban_android' in request.META.get('HTTP_USER_AGENT') or 'yiban_iOS' in request.META.get('HTTP_USER_AGENT'):
             if request.GET.get('redirect') is None:
                 return redirect('/yiban_login/')
 
