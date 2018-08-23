@@ -31,26 +31,35 @@ class Dormitory(object):
         """ 获取宿舍基本信息 """
         self.session.get(
             'http://ehall.sdut.edu.cn/appShow?appId=4618295887225301')
+        # data = {
+        #     'requestParams': '{}',
+        #     'actionType': 'MINE',
+        #     'actionName': 'xtsjcx',
+        #     'dataModelAction': 'QUERY',
+        # }
+        # # 不知原因的不加这一条就查询不出来
+        # rst = self.session.post(
+        #     'http://ehall.sdut.edu.cn/xsfw/sys/xszsapp/commoncall/callQuery/xtsjcx-MINE-QUERY.do', data=data)
+        # data = {
+        #     'requestParams': '{"XSBH":"%s"}' % self.ehall.user_id,
+        #     'actionType': 'MINE',
+        #     'actionName': 'cxxszsdz',
+        #     'dataModelAction': 'QUERY'
+        # }
+        # rst = self.session.post(
+        #     'http://ehall.sdut.edu.cn/xsfw/sys/xszsapp/commoncall/callQuery/cxxszsdz-MINE-QUERY.do', data=data)
         data = {
-            'requestParams': '{}',
-            'actionType': 'MINE',
-            'actionName': 'xtsjcx',
-            'dataModelAction': 'QUERY',
-        }
-        # 不知原因的不加这一条就查询不出来
-        rst = self.session.post(
-            'http://ehall.sdut.edu.cn/xsfw/sys/xszsapp/commoncall/callQuery/xtsjcx-MINE-QUERY.do', data=data)
-        data = {
-            'requestParams': '{"XSBH":"%s"}' % self.ehall.user_id,
-            'actionType': 'MINE',
-            'actionName': 'cxxszsdz',
-            'dataModelAction': 'QUERY'
+            'requestParamStr': '{"bh":1}'
         }
         rst = self.session.post(
-            'http://ehall.sdut.edu.cn/xsfw/sys/xszsapp/commoncall/callQuery/cxxszsdz-MINE-QUERY.do', data=data)
+            'http://ehall.sdut.edu.cn/xsfw/sys/sswjapp/modules/stu/queryDiscipline.do', data=data)
         rdata = json.loads(rst.text)
-        self.campus, self.floor, self.room, self.bed_no = rdata['data'][0]['ZSDZ'].split(
-            '/')
+        self.campus = rdata['data']['XQMC']
+        self.floor = rdata['data']['SSLMC']
+        self.room = rdata['data']['FJH'] + '室'
+        self.bed_no = '0'  # 新的接口无法获得床号
+        # self.campus, self.floor, self.room, self.bed_no = rdata['data'][0]['ZSDZ'].split(
+        #     '/')
         return {
             'campus': self.campus,
             'floor': self.floor,
